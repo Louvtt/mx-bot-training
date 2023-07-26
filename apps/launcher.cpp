@@ -1,8 +1,8 @@
 #include <iostream>
-#include "mx/application.hpp"
 #include "mx/mx.hpp"
+#include "mx/bot/botApplication.hpp"
 
 mx::Application* createApplication(int argc, char **argv)
 {
-    return new mx::Application();
+    return new mx::BotApplication();
 }

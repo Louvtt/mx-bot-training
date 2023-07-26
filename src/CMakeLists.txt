@@ -4,6 +4,11 @@ set(HEADER_LIST
     "${MxBotLauncher_SOURCE_DIR}/include/mx/mx.hpp"
     "${MxBotLauncher_SOURCE_DIR}/include/mx/application.hpp"
     "${MxBotLauncher_SOURCE_DIR}/include/mx/time.hpp"
+    "${MxBotLauncher_SOURCE_DIR}/include/mx/fileUtils.hpp"
+    # Bot
+    "${MxBotLauncher_SOURCE_DIR}/include/mx/bot/bot.hpp"
+    "${MxBotLauncher_SOURCE_DIR}/include/mx/bot/botManager.hpp"
+    "${MxBotLauncher_SOURCE_DIR}/include/mx/bot/botApplication.hpp"
 )
 
 # ======================
@@ -14,6 +19,11 @@ add_library(mxbotlib
     # Sources
     application.cpp
     entrypoint.cpp
+    fileUtils.cpp
+
+    bot/bot.cpp
+    bot/botManager.cpp
+    bot/botApplication.cpp
 )
 
 target_include_directories(mxbotlib PUBLIC ../include)
@@ -24,6 +34,7 @@ PRIVATE
     glad
     glfw
     imgui
+    spdlog
 )
 
 target_compile_features(mxbotlib PUBLIC cxx_std_17)

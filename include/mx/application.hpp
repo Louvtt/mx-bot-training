@@ -16,7 +16,7 @@ private:
     Time m_time;
 
 public:
-    Application();
+    Application(const char* name);
     virtual ~Application();
 
     void run();
