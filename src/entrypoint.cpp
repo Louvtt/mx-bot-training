@@ -5,16 +5,17 @@
 
 int main(int argc, char** argv)
 {
+    mx::Application* app = nullptr;
     try {
-        mx::Application* app = createApplication(argc, argv);
+        app = createApplication(argc, argv);
         app->run();
-        delete app;
     }
     catch(std::exception e)
     {
         fprintf(stderr, "[ERROR]: %s", e.what());
         return 1;
     }
+    delete app;
 
     return 0;
 }

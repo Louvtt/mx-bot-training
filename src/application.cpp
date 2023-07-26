@@ -1,6 +1,7 @@
 #include "mx/application.hpp"
 
 
+#include "GLFW/glfw3.h"
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
@@ -37,6 +38,12 @@ mx::Application::Application()
     glfwMakeContextCurrent(m_window);
     glfwSwapInterval(1); // Enable vsync
 
+    // Init OpenGL
+    int version = gladLoadGL(glfwGetProcAddress);
+    if(version == 0) {
+        throw std::runtime_error("Failed to load openGL");
+    }
+    printf("Loaded GL: %d.%d", GLAD_VERSION_MAJOR(version), GLAD_VERSION_MINOR(version));
 
     // Init imgui
     {
@@ -97,9 +104,9 @@ void mx::Application::preRender()
 
     int display_w, display_h;
     glfwGetFramebufferSize(m_window, &display_w, &display_h);
-    // glViewport(0, 0, display_w, display_h);
-    // glClearColor(.1f, .1f, .1f, 1.f);
-    // glClear(GL_COLOR_BUFFER_BIT);
+    glViewport(0, 0, display_w, display_h);
+    glClearColor(.1f, .1f, .1f, 1.f);
+    glClear(GL_COLOR_BUFFER_BIT);
 }
 void mx::Application::postRender()
 {

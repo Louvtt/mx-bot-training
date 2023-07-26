@@ -10,10 +10,10 @@ set(HEADER_LIST
 
 
 add_library(mxbotlib 
-${HEADER_LIST}
-# Sources
-application.cpp
-entrypoint.cpp
+    ${HEADER_LIST}
+    # Sources
+    application.cpp
+    entrypoint.cpp
 )
 
 target_include_directories(mxbotlib PUBLIC ../include)
