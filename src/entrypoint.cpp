@@ -3,6 +3,8 @@
 #include <cstdio>
 #include <exception>
 
+#include "spdlog/spdlog.h"
+
 int main(int argc, char** argv)
 {
     mx::Application* app = nullptr;
@@ -12,7 +14,7 @@ int main(int argc, char** argv)
     }
     catch(std::exception e)
     {
-        fprintf(stderr, "[ERROR]: %s", e.what());
+        spdlog::error("[ERROR]: {}", e.what());
         return 1;
     }
     delete app;

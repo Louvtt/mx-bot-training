@@ -7,6 +7,7 @@
 #include "imgui_impl_opengl3.h"
 #include <glad/gl.h>
 
+#include <spdlog/spdlog.h>
 #include <stdio.h>
 #include <stdexcept>
 
@@ -16,13 +17,16 @@ static void glfw_error_callback(int error, const char* description)
     fprintf(stderr, "GLFW Error %d: %s\n", error, description);
 }
 
-mx::Application::Application()
+mx::Application::Application(const char* name)
 : m_time()
 {
+    spdlog::info("Creating Application.");
+
     glfwSetErrorCallback(glfw_error_callback);
     if(!glfwInit()) {
         throw std::runtime_error("GLFW Failed to load");
     }
+    spdlog::info("GLFW loaded.");
 
     const char* glsl_version = "#version 460";
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -31,10 +35,12 @@ mx::Application::Application()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
     // Window initialisation
-    m_window = glfwCreateWindow(800, 600, "MxBotLauncher", NULL, NULL);
+    m_window = glfwCreateWindow(800, 600, name, NULL, NULL);
     if(m_window == nullptr) {
         throw std::runtime_error("Failed to create the window");
     }
+    spdlog::info("GLFWwindow created successfully.");
+
     glfwMakeContextCurrent(m_window);
     glfwSwapInterval(1); // Enable vsync
 
@@ -43,7 +49,7 @@ mx::Application::Application()
     if(version == 0) {
         throw std::runtime_error("Failed to load openGL");
     }
-    printf("Loaded GL: %d.%d", GLAD_VERSION_MAJOR(version), GLAD_VERSION_MINOR(version));
+    spdlog::info("Loaded OpenGL {}.{}.", GLAD_VERSION_MAJOR(version), GLAD_VERSION_MINOR(version));
 
     // Init imgui
     {
@@ -56,11 +62,14 @@ mx::Application::Application()
 
         // Setup Dear ImGui style
         ImGui::StyleColorsDark();
-        //ImGui::StyleColorsLight();
+        // ImGui::StyleColorsLight();
 
         // Setup Platform/Renderer backends
-        ImGui_ImplGlfw_InitForOpenGL(m_window, true);
-        ImGui_ImplOpenGL3_Init(glsl_version);
+        if(!ImGui_ImplGlfw_InitForOpenGL(m_window, true))
+            spdlog::error("ImGUI Glfw Implementation failed to load");
+        if(!ImGui_ImplOpenGL3_Init(glsl_version))
+            spdlog::error("ImGUI OpenGL3 Implementation failed to load");
+        spdlog::info("ImGui was loaded.");
     }
 }
 
@@ -70,10 +79,12 @@ mx::Application::~Application()
     ImGui_ImplGlfw_Shutdown();
     ImGui_ImplOpenGL3_Shutdown();
     ImGui::DestroyContext();
+    spdlog::info("ImGui shutdown.");
 
     // glfw shutdown
     glfwDestroyWindow(m_window);
     glfwTerminate();
+    spdlog::info("GLFW shutdown.");
 }
 
 void mx::Application::run()
@@ -120,8 +131,5 @@ void mx::Application::update()
 {}
 void mx::Application::render()
 {
-    // Default interface
-    ImGui::Begin("Demo");
-    
-    ImGui::End();
+    ImGui::ShowDemoWindow();
 }

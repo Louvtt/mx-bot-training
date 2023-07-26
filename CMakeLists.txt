@@ -7,9 +7,11 @@ project(MxBotLauncher
 )
 
 option(MxBot_BUILD_DOCS "Build project documentation" OFF)
+option(MxBot_BUILD_BOTS "Build project bots" OFF)
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
+    set(CMAKE_CXX_STANDARD 17) # default c++ standard
     set(CMAKE_CXX_EXTENSIONS OFF) # disable std=g++ and use std=c++
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -34,3 +36,7 @@ add_subdirectory(src)
 
 # Add app
 add_subdirectory(apps)
+
+if(MxBot_BUILD_BOTS)
+   add_subdirectory(bots)
+endif()

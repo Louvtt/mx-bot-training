@@ -11,3 +11,7 @@ add_subdirectory(glfw)
 # == ImGui ==
 
 add_subdirectory(imgui)
+
+# == spdlog ==
+
+add_subdirectory(spdlog)
