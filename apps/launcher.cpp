@@ -1,8 +1,8 @@
 #include <iostream>
+#include "mx/application.hpp"
+#include "mx/mx.hpp"
 
-int main(int argc, char** argv)
+mx::Application* createApplication(int argc, char **argv)
 {
-    std::cout << "Hello, World!" << std::endl;
-    
-    return 0;
+    return new mx::Application();
 }

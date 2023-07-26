@@ -71,3 +71,6 @@ _deps
 
 # Build dir
 build/
+
+# Clang
+.cache

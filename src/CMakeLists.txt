@@ -2,19 +2,26 @@
 # ====== Headers =======
 set(HEADER_LIST
     "${MxBotLauncher_SOURCE_DIR}/include/mx/mx.hpp"
+    "${MxBotLauncher_SOURCE_DIR}/include/mx/application.hpp"
+    "${MxBotLauncher_SOURCE_DIR}/include/mx/time.hpp"
 )
 
 # ======================
 
+
 add_library(mxbotlib 
-    # Sources
-    ${HEADER_LIST}
+${HEADER_LIST}
+# Sources
+application.cpp
+entrypoint.cpp
 )
 
 target_include_directories(mxbotlib PUBLIC ../include)
 
+find_package(OpenGL REQUIRED)
 target_link_libraries(mxbotlib
-PRIVATE 
+PRIVATE
+    glad
     glfw
     imgui
 )

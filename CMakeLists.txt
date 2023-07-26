@@ -1,9 +1,9 @@
-cmake_minimum_required(VERSION 3.16..3.20)
+cmake_minimum_required(VERSION 3.16)
 
 project(MxBotLauncher 
     VERSION 0.0.1 
     DESCRIPTION "A simple launcher to test bot scripts (for the exolegend event)"
-    LANGUAGES CXX
+    LANGUAGES CXX C
 )
 
 option(MxBot_BUILD_DOCS "Build project documentation" OFF)
@@ -12,6 +12,8 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
     set(CMAKE_CXX_EXTENSIONS OFF) # disable std=g++ and use std=c++
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
+    set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
     # Build docs
     if(BUILD_DOCS)
