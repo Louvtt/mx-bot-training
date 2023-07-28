@@ -32,12 +32,18 @@ find_package(OpenGL REQUIRED)
 target_link_libraries(mxbotlib
 PRIVATE
     glad
-    glfw
     imgui
     spdlog
 )
 
 target_compile_features(mxbotlib PUBLIC cxx_std_17)
+
+# GLFW with EMSCRIPEN 
+if(EMSCRIPTEN)
+    target_link_options(mxbotlib PRIVATE -sUSE_GLFW=3)
+else()
+    target_link_libraries(mxbotlib PRIVATE glfw)
+endif()
 
 source_group(
     TREE "${PROJECT_SOURCE_DIR}/include"

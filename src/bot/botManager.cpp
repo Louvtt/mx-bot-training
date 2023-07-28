@@ -34,7 +34,8 @@ void mx::BotManager::update()
 
 void mx::BotManager::renderUI()
 {
-    ImGui::Begin("Bot Manager");
+    ImGui::SetNextWindowPos(ImVec2{0, 0});
+    ImGui::Begin("Bot Manager", NULL, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
         ImGui::BeginGroup();
         ImGui::InputText("Path", m_botPath, BOT_PATH_SIZE);
         ImGui::SameLine();
