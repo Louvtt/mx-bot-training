@@ -17,3 +17,6 @@ add_subdirectory(imgui)
 # == spdlog ==
 
 add_subdirectory(spdlog)
+
+# == yaml-cpp ==
+add_subdirectory(yaml)

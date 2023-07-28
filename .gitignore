@@ -78,3 +78,6 @@ docs/
 
 # Clang
 .cache
+
+# ImGui
+imgui.ini

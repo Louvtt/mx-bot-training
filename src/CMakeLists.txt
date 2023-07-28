@@ -33,6 +33,7 @@ target_link_libraries(mxbotlib
 PRIVATE
     glad
     imgui
+    yaml-cpp
     spdlog
 )
 
