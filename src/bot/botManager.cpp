@@ -1,7 +1,9 @@
 #include "mx/bot/botManager.hpp"
 
 #include "mx/bot/bot.hpp"
+#include "mx/fileInput.hpp"
 #include "mx/fileUtils.hpp"
+#include "mx/core/platform.hpp"
 
 #include <cstdio>
 #include <string.h>
@@ -13,8 +15,8 @@
 
 mx::BotManager::BotManager()
 : m_bots(), 
-m_selected(0),
-m_botPath(new char[BOT_PATH_SIZE]())
+m_selected(""),
+m_fileInput()
 { }
 
 mx::BotManager::~BotManager()
@@ -32,46 +34,87 @@ void mx::BotManager::update()
     }
 }
 
+static bool isEntryValid(char* entry)
+{
+    if (strlen(entry) == 0) return false;
+    for(int i = 0; i < strlen(entry); ++i) {
+        if(entry[i] != ' ') return true;
+    }
+    return false;
+}
+
 void mx::BotManager::renderUI()
 {
     ImGui::SetNextWindowPos(ImVec2{0, 0});
-    ImGui::Begin("Bot Manager", NULL, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
-        ImGui::BeginGroup();
-        ImGui::InputText("Path", m_botPath, BOT_PATH_SIZE);
-        ImGui::SameLine();
-        if(ImGui::Button("Add")) {
-            addBot(std::string(m_botPath));
+    ImGui::SetNextWindowSize({300.f, ImGui::GetIO().DisplaySize.y});
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.f);
+    ImGui::Begin("Bot Manager", NULL, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDecoration);
+    
+    {
+        if(m_fileInput.draw()) {
+            addBot(m_fileInput.getFilePath());
         }
-        ImGui::EndGroup();
+    }
 
-        // Bot list
-        ImGui::BeginChild("Bots");
-            int i = 0;
-            for(auto [name, bot] : m_bots)
-            {
-                ImGui::Text("%02d Bot ", i);
-                ImGui::SameLine();
+    ImGui::Separator();
 
-                ImGui::BeginDisabled(!bot->canReload());
-                if(ImGui::Button("Reload")) {
-                    bot->reloadSymbols();
-                }
-                ImGui::EndDisabled();
-                ++i;
-            }
+    // Bot List
+    {
+        ImGui::BeginChild("Bots", ImVec2(100, 0), true);
+        int i = 0;
+        for (auto [name, bot] : m_bots)
+        {
+            char label[128];
+            std::snprintf(label, 128, "Bot %4d", i);
+            if (ImGui::Selectable(label, m_selected == name))
+                m_selected = name;
+            ++i;
+        }
         ImGui::EndChild();
+    }
+
+    {
+        ImGui::BeginChild("Bot properties", ImVec2(200, 0), false);
+        if(m_bots.find(m_selected) != m_bots.end()) {
+            Bot* bot = m_bots.at(m_selected);
+            ImGui::Text("Library Path: %s", bot->getPath().c_str());
+            
+            ImGui::BeginDisabled(!bot->canReload());
+            if(ImGui::Button("Reload")) {
+                bot->reloadSymbols();
+            }
+            ImGui::EndDisabled();
+        }
+        ImGui::EndChild();
+    }
     ImGui::End();
+    ImGui::PopStyleVar();
 }
 
 void mx::BotManager::addBot(const std::string& path)
 {   
     if(m_bots.find(path) == m_bots.end()) {
-        if(mx::fileExists(path)) {
+        if(isPathValidLibrary(path)) {
             m_bots.insert({ path, new Bot(path) });
-        } else {
-            spdlog::error("{} doesn't exists.", path);
+        }  else {
+            spdlog::error("{} isn't a valid file (doesn't exist or wrong extension).", path);
         }
     } else {
         spdlog::error("{} already exists. (Use reload)", path);
     }
+}
+
+bool mx::BotManager::isPathValidLibrary(const std::string& path)
+{
+    if(mx::exists(path) && mx::isFile(path)) {
+        #if defined(_WIN32) | defined(WIN32)
+        if(mx::getFileExtension(path) == ".dll")
+        #elif defined(__unix__)
+        if(mx::getFileExtension(path) == ".so")
+        #endif
+        {
+            return true;
+        }
+    }
+   return false; 
 }

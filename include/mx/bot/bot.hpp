@@ -29,6 +29,8 @@ public:
 
     bool canReload() const;
     void reloadSymbols();
+
+    std::string getPath() const;
 };
 
 }

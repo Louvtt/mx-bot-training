@@ -1,6 +1,7 @@
 #ifndef _MX_BOT_BOTMANAGER_HPP_
 #define _MX_BOT_BOTMANAGER_HPP_
 
+#include "mx/fileInput.hpp"
 #include <unordered_map>
 #include <string>
 
@@ -14,8 +15,8 @@ private:
     std::unordered_map<std::string, Bot*> m_bots;
 
     // ui
-    char* m_botPath;
-    unsigned int m_selected;
+    FileInput m_fileInput;
+    std::string m_selected;
 
 public:
     BotManager();
@@ -25,6 +26,9 @@ public:
     void renderUI();
 
     void addBot(const std::string& path);
+
+private:
+    bool isPathValidLibrary(const std::string& path);
 };
 
 }

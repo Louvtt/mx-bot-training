@@ -82,3 +82,8 @@ void mx::Bot::reloadSymbols()
         loadSymbols();
     }
 }
+
+std::string mx::Bot::getPath() const
+{
+    return m_path;
+}

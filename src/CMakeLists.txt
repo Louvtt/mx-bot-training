@@ -5,6 +5,9 @@ set(HEADER_LIST
     "${MxBotLauncher_SOURCE_DIR}/include/mx/application.hpp"
     "${MxBotLauncher_SOURCE_DIR}/include/mx/time.hpp"
     "${MxBotLauncher_SOURCE_DIR}/include/mx/fileUtils.hpp"
+    "${MxBotLauncher_SOURCE_DIR}/include/mx/fileInput.hpp"
+    # Core
+    "${MxBotLauncher_SOURCE_DIR}/include/mx/core/platform.hpp"
     # Bot
     "${MxBotLauncher_SOURCE_DIR}/include/mx/bot/bot.hpp"
     "${MxBotLauncher_SOURCE_DIR}/include/mx/bot/botManager.hpp"
@@ -20,6 +23,7 @@ add_library(mxbotlib
     application.cpp
     entrypoint.cpp
     fileUtils.cpp
+    fileInput.cpp
 
     bot/bot.cpp
     bot/botManager.cpp
@@ -35,6 +39,7 @@ PRIVATE
     imgui
     yaml-cpp
     spdlog
+    stdc++fs
 )
 
 target_compile_features(mxbotlib PUBLIC cxx_std_17)

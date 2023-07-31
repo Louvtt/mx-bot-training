@@ -1,23 +1,65 @@
 #include "mx/fileUtils.hpp"
+#include "imgui.h"
+#include <cmath>
+#include <spdlog/spdlog.h>
+#include <vector>
 
-#if defined(_WIN32) | defined(WIN32)
-#   error "Windows not supported yet."
-#else
-#   include <sys/stat.h>
-#endif
+#include <filesystem>
+namespace fs = std::filesystem;
 
-
-bool mx::fileExists(const std::string& path)
+std::string mx::getFileExtension(const std::string path)
 {
-    struct stat fileStat;
-    return (stat(path.c_str(), &fileStat)) == 0;
+    return path.substr(path.find_last_of('.'));
 }
 
-int mx::getFileModifiedTimeSec(const std::string& path)
+bool mx::exists(const std::string& path)
 {
-    struct stat fileStat;
-    if (stat(path.c_str(), &fileStat) == 0) {
-        return fileStat.st_mtim.tv_sec;
+    return fs::exists(path);
+}
+
+bool mx::isFile(const std::string& path) 
+{
+    return fs::is_regular_file(path)
+        || fs::is_character_file(path)
+        || fs::is_block_file(path);
+}
+
+bool mx::isDirectory(const std::string& path)
+{
+    return fs::is_directory(path);
+}
+
+
+uint32_t mx::getFileModifiedTimeSec(const std::string& path)
+{
+    if (fs::exists(path)) {
+        return fs::last_write_time(path).time_since_epoch().count();
     }
     return 0;
+}
+
+std::vector<mx::EntryDescriptor> 
+mx::listDirectory(const std::string& path)
+{
+    std::vector<mx::EntryDescriptor> listed{};
+    if(fs::exists(path)) {
+        spdlog::debug("Listing {}", path);
+        for(fs::directory_entry entry : fs::directory_iterator(path)) {
+            listed.push_back(mx::EntryDescriptor{
+                .path       = entry.path().string(),
+                .name       = entry.path().filename(),
+                .extension  = entry.path().extension(),
+                .mtime      = (uint32_t)entry.last_write_time().time_since_epoch().count(),
+                .size       = (entry.is_directory() ? 0u : entry.file_size()),
+                .isDir      = entry.is_directory()
+            });
+        }
+    }
+
+    return listed;
+}
+
+std::string mx::getWorkingDirectoryPath()
+{
+    return fs::current_path();
 }
