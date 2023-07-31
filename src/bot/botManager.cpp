@@ -30,7 +30,9 @@ mx::BotManager::~BotManager()
 void mx::BotManager::update()
 {
     for(auto [name, bot] : m_bots) {
-        bot->update();
+        if(!bot->isPaused()) {
+            bot->update();
+        }
     }
 }
 
@@ -66,13 +68,15 @@ void mx::BotManager::renderUI()
         {
             char label[128];
             std::snprintf(label, 128, "Bot %4d", i);
-            if (ImGui::Selectable(label, m_selected == name))
+            if (ImGui::Selectable(label, m_selected == name, ImGuiSelectableFlags_AllowDoubleClick)) {
+                spdlog::info("Selected {}", m_selected);
                 m_selected = name;
+            }
             ++i;
         }
         ImGui::EndChild();
     }
-
+    ImGui::SameLine();
     {
         ImGui::BeginChild("Bot properties", ImVec2(200, 0), false);
         if(m_bots.find(m_selected) != m_bots.end()) {
@@ -80,10 +84,14 @@ void mx::BotManager::renderUI()
             ImGui::Text("Library Path: %s", bot->getPath().c_str());
             
             ImGui::BeginDisabled(!bot->canReload());
-            if(ImGui::Button("Reload")) {
+            if(ImGui::Button("Reload", ImVec2(-5, 0))) {
                 bot->reloadSymbols();
             }
             ImGui::EndDisabled();
+
+            if(ImGui::Button(bot->isPaused() ? "Play" : "Stop", ImVec2(-5, 0))) {
+                bot->setPaused(!bot->isPaused());
+            }
         }
         ImGui::EndChild();
     }

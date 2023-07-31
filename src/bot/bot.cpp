@@ -15,7 +15,8 @@ mx::Bot::Bot(const std::string& name)
 m_handle(nullptr),
 m_symbols({
     nullptr
-})
+}),
+m_paused(true)
 {
     loadSymbols();
 }
@@ -86,4 +87,13 @@ void mx::Bot::reloadSymbols()
 std::string mx::Bot::getPath() const
 {
     return m_path;
+}
+
+bool mx::Bot::isPaused() const
+{
+    return m_paused;
+}
+void mx::Bot::setPaused(bool paused)
+{
+    m_paused = paused;
 }

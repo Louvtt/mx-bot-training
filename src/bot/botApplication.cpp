@@ -1,10 +1,12 @@
 #include "mx/bot/botApplication.hpp"
 #include "mx/bot/botManager.hpp"
+#include "yaml-cpp/node/parse.h"
 
 mx::BotApplication::BotApplication()
 : Application("MxBotLauncher"),
 m_botManager(new BotManager())
-{ }
+{
+}
 mx::BotApplication::~BotApplication()
 {
     delete m_botManager;

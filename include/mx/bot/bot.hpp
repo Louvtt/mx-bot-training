@@ -19,6 +19,12 @@ private:
 
     uint32_t m_lastLoadedMt;
 
+    struct Position {
+        float x, y;
+    } m_position;
+
+    bool m_paused;
+
 public:
     Bot(const std::string& path);
     ~Bot();
@@ -29,6 +35,9 @@ public:
 
     bool canReload() const;
     void reloadSymbols();
+
+    bool isPaused() const;
+    void setPaused(bool paused);
 
     std::string getPath() const;
 };
