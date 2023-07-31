@@ -13,6 +13,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
     set(CMAKE_CXX_STANDARD 17) # default c++ standard
     set(CMAKE_CXX_EXTENSIONS OFF) # disable std=g++ and use std=c++
+    set(CMAKE_CXX_STANDARD_REQUIRE ON) # enable stdc++fs
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
     set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

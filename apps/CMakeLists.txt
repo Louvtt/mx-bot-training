@@ -6,4 +6,5 @@ target_link_libraries(mxlauncher
 PRIVATE 
     mxbotlib
     spdlog
+    stdc++fs
 )
