@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "mxbotlib/apps",
+		"source" : "E:/Dev/CPP/exolegend/apps"
+	}
+}

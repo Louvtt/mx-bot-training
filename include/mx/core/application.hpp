@@ -1,11 +1,12 @@
-#ifndef _MX_APPLICATION_HPP_
-#define _MX_APPLICATION_HPP_
+#ifndef _MX_CORE_APPLICATION_HPP_
+#define _MX_CORE_APPLICATION_HPP_
 
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#include "time.hpp"
+#include <memory>
 
+#include "time.hpp"
 
 namespace mx {
 
@@ -32,6 +33,6 @@ protected:
 
 }
 
-extern mx::Application* createApplication(int argc, char** argv);
+extern std::unique_ptr<mx::Application> createApplication(int argc, char** argv);
 
-#endif //_MX_APPLICATION_HPP_
+#endif //_MX_CORE_APPLICATION_HPP_

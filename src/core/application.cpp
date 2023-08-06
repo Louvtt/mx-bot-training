@@ -1,4 +1,4 @@
-#include "mx/application.hpp"
+#include "mx/core/application.hpp"
 
 
 #include "GLFW/glfw3.h"
@@ -11,22 +11,27 @@
 #include <stdio.h>
 #include <stdexcept>
 
+#include "mx/core/console.hpp"
+
+#include "mx/core/log.hpp"
+
 
 static void glfw_error_callback(int error, const char* description)
 {
-    fprintf(stderr, "GLFW Error %d: %s\n", error, description);
+    MX_ERROR("GLFW Error {}: {}", error, description);
 }
 
 mx::Application::Application(const char* name)
 : m_time()
 {
-    spdlog::info("Creating Application.");
+    Console::Initialize();
+    MX_INFO("Creating Application.");
 
     glfwSetErrorCallback(glfw_error_callback);
     if(!glfwInit()) {
         throw std::runtime_error("GLFW Failed to load");
     }
-    spdlog::info("GLFW loaded.");
+    MX_INFO("GLFW loaded.");
 
     const char* glsl_version = "#version 460";
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -39,7 +44,7 @@ mx::Application::Application(const char* name)
     if(m_window == nullptr) {
         throw std::runtime_error("Failed to create the window");
     }
-    spdlog::info("GLFWwindow created successfully.");
+    MX_INFO("GLFWwindow created successfully.");
 
     glfwMakeContextCurrent(m_window);
     glfwSwapInterval(1); // Enable vsync
@@ -49,7 +54,7 @@ mx::Application::Application(const char* name)
     if(version == 0) {
         throw std::runtime_error("Failed to load openGL");
     }
-    spdlog::info("Loaded OpenGL {}.{}.", GLAD_VERSION_MAJOR(version), GLAD_VERSION_MINOR(version));
+    MX_INFO("Loaded OpenGL {}.{}.", GLAD_VERSION_MAJOR(version), GLAD_VERSION_MINOR(version));
 
     // Init imgui
     {
@@ -66,10 +71,10 @@ mx::Application::Application(const char* name)
 
         // Setup Platform/Renderer backends
         if(!ImGui_ImplGlfw_InitForOpenGL(m_window, true))
-            spdlog::error("ImGUI Glfw Implementation failed to load");
+            MX_ERROR("ImGUI Glfw Implementation failed to load");
         if(!ImGui_ImplOpenGL3_Init(glsl_version))
-            spdlog::error("ImGUI OpenGL3 Implementation failed to load");
-        spdlog::info("ImGui was loaded.");
+            MX_ERROR("ImGUI OpenGL3 Implementation failed to load");
+        MX_INFO("ImGui was loaded.");
     }
 }
 
@@ -79,12 +84,14 @@ mx::Application::~Application()
     ImGui_ImplGlfw_Shutdown();
     ImGui_ImplOpenGL3_Shutdown();
     ImGui::DestroyContext();
-    spdlog::info("ImGui shutdown.");
+    MX_INFO("ImGui shutdown.");
 
     // glfw shutdown
     glfwDestroyWindow(m_window);
     glfwTerminate();
-    spdlog::info("GLFW shutdown.");
+    MX_INFO("GLFW shutdown.");
+    // Shutdown console
+    Console::Shutdown();
 }
 
 void mx::Application::run()
@@ -100,6 +107,8 @@ void mx::Application::run()
         // application dependant
         update();
         render();
+
+        Console::DrawUI();
 
         postRender();
     }

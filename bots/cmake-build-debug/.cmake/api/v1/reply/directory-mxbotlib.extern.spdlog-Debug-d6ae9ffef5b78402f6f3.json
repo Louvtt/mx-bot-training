@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "mxbotlib/extern/spdlog",
+		"source" : "E:/Dev/CPP/exolegend/extern/spdlog"
+	}
+}

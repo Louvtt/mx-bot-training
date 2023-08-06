@@ -1,9 +1,12 @@
 #include "mx/bot/botManager.hpp"
 
 #include "mx/bot/bot.hpp"
+#include "mx/bot/botApplication.hpp"
+
 #include "mx/fileInput.hpp"
 #include "mx/fileUtils.hpp"
 #include "mx/core/platform.hpp"
+#include "mx/core/log.hpp"
 
 #include <cstdio>
 #include <string.h>
@@ -13,10 +16,11 @@
 
 #define BOT_PATH_SIZE 256
 
-mx::BotManager::BotManager()
+mx::BotManager::BotManager(mx::BotApplication* application)
 : m_bots(), 
 m_selected(""),
-m_fileInput()
+m_fileInput(),
+m_application(application)
 { }
 
 mx::BotManager::~BotManager()
@@ -54,7 +58,7 @@ void mx::BotManager::renderUI()
     
     {
         if(m_fileInput.draw()) {
-            addBot(m_fileInput.getFilePath());
+            addBot(m_fileInput.getFilePath().string());
         }
     }
 
@@ -69,7 +73,7 @@ void mx::BotManager::renderUI()
             char label[128];
             std::snprintf(label, 128, "Bot %4d", i);
             if (ImGui::Selectable(label, m_selected == name, ImGuiSelectableFlags_AllowDoubleClick)) {
-                spdlog::info("Selected {}", m_selected);
+                MX_INFO("Selected {}", m_selected);
                 m_selected = name;
             }
             ++i;
@@ -86,6 +90,8 @@ void mx::BotManager::renderUI()
             ImGui::BeginDisabled(!bot->canReload());
             if(ImGui::Button("Reload", ImVec2(-5, 0))) {
                 bot->reloadSymbols();
+                // update arena if reloaded
+                bot->setArena(m_application->getArena());
             }
             ImGui::EndDisabled();
 
@@ -103,12 +109,14 @@ void mx::BotManager::addBot(const std::string& path)
 {   
     if(m_bots.find(path) == m_bots.end()) {
         if(isPathValidLibrary(path)) {
-            m_bots.insert({ path, new Bot(path) });
+            mx::Bot* bot = new Bot(path);
+            bot->setArena(m_application->getArena());
+            m_bots.insert({ path,  bot});
         }  else {
-            spdlog::error("{} isn't a valid file (doesn't exist or wrong extension).", path);
+            MX_ERROR("{} isn't a valid file (doesn't exist or wrong extension).", path);
         }
     } else {
-        spdlog::error("{} already exists. (Use reload)", path);
+        MX_ERROR("{} already exists. (Use reload)", path);
     }
 }
 

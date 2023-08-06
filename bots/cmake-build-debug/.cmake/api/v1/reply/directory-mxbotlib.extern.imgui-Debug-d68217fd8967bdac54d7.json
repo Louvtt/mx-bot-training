@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "mxbotlib/extern/imgui",
+		"source" : "E:/Dev/CPP/exolegend/extern/imgui"
+	}
+}

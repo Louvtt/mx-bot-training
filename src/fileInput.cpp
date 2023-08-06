@@ -1,6 +1,7 @@
 #include "mx/fileInput.hpp"
 
 #include "mx/fileUtils.hpp"
+#include "mx/core/log.hpp"
 
 #include <cstdlib>
 #include <cstring>
@@ -67,16 +68,16 @@ bool mx::FileInput::draw()
                 }
                 if(ImGui::Selectable("..", false, ImGuiSelectableFlags_AllowDoubleClick)) {
                     if(m_currentPath.has_parent_path()) {
-                        setCurrentPath(m_currentPath.parent_path());
+                        setCurrentPath(m_currentPath.parent_path().string());
                     }
                 }
                 for(auto entry : m_currentEntries) {
                     if(ImGui::Selectable(entry.name.c_str(), false, ImGuiSelectableFlags_AllowDoubleClick)) {
-                        spdlog::info("{} selected", entry.name);
+                        MX_INFO("{} selected", entry.name);
                         if(entry.isDir) {
                             setCurrentPath(entry.path);
                         } else {
-                            m_currentPathTemp = entry.path;
+                            m_currentFilePathTemp = entry.path;
                             m_currentFilePath = entry.path;
                             openButton = true;
                             m_modalOpened = false;
@@ -102,8 +103,9 @@ void mx::FileInput::setCurrentPath(const std::string& path)
 {
     if(fs::exists(path)
     && fs::is_directory(path)) {
-        spdlog::debug("[FileInput]: Setting path to {}", m_currentPathTemp);
+        MX_DEBUG("[FileInput]: Setting path to {}", m_currentPathTemp);
         m_currentPath = path;
+        m_currentPathTemp = path;
         m_currentEntries = mx::listDirectory(path);
     }
 }

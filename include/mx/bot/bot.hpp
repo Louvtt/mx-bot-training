@@ -4,6 +4,9 @@
 #include <cstdint>
 #include <string>
 
+#include "../botlib/remoteBot.hpp"
+#include "arena.hpp"
+
 namespace mx {
 
 class Bot
@@ -12,9 +15,9 @@ private:
     std::string m_path;
     void* m_handle;
 
-    using bot_update = void (*)();
     struct symbols {
-        bot_update update;
+        RemoteBot::bot_create_func createFunc;
+        RemoteBot* remoteBot;
     } m_symbols;
 
     uint32_t m_lastLoadedMt;
@@ -38,6 +41,8 @@ public:
 
     bool isPaused() const;
     void setPaused(bool paused);
+
+    void setArena(Arena* arena);
 
     std::string getPath() const;
 };

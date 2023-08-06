@@ -11,7 +11,7 @@
 #ifndef _MX_FILEINPUT_HPP_
 #define _MX_FILEINPUT_HPP_
 
-#include "mx/fileUtils.hpp"
+#include "fileUtils.hpp"
 #include <string>
 #include <vector>
 

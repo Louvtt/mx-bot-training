@@ -1,12 +1,13 @@
 #ifndef _MX_BOT_BOTMANAGER_HPP_
 #define _MX_BOT_BOTMANAGER_HPP_
 
-#include "mx/fileInput.hpp"
+#include "../fileInput.hpp"
 #include <unordered_map>
 #include <string>
 
 namespace mx {
 
+class BotApplication;
 class Bot;
 
 class BotManager
@@ -18,8 +19,9 @@ private:
     FileInput m_fileInput;
     std::string m_selected;
 
+    BotApplication* m_application;
 public:
-    BotManager();
+    BotManager(BotApplication* application);
     ~BotManager();
 
     void update();

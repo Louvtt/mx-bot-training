@@ -1,5 +1,5 @@
-#ifndef _MX_TIME_HPP_
-#define _MX_TIME_HPP_
+#ifndef _MX_CORE_TIME_HPP_
+#define _MX_CORE_TIME_HPP_
 
 #include <cstdint>
 
@@ -12,4 +12,4 @@ struct Time {
 
 }
 
-#endif //_MX_TIME_HPP_
+#endif //_MX_CORE_TIME_HPP_

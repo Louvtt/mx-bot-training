@@ -1,0 +1,686 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						12,
+						13
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "mxbotlib",
+					"childIndexes" : 
+					[
+						2,
+						10,
+						11
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-mxbotlib-Debug-077359bd1fbb59dac86c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "E:/Dev/CPP/exolegend"
+				},
+				{
+					"build" : "mxbotlib/extern",
+					"childIndexes" : 
+					[
+						3,
+						4,
+						6,
+						7,
+						8
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-mxbotlib.extern-Debug-152b79ee5ab4e3c22511.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "E:/Dev/CPP/exolegend/extern"
+				},
+				{
+					"build" : "mxbotlib/extern/glad",
+					"jsonFile" : "directory-mxbotlib.extern.glad-Debug-6209e79f68e602bacead.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "E:/Dev/CPP/exolegend/extern/glad",
+					"targetIndexes" : 
+					[
+						29
+					]
+				},
+				{
+					"build" : "mxbotlib/extern/glfw",
+					"childIndexes" : 
+					[
+						5
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-mxbotlib.extern.glfw-Debug-1e5f60270040c3a677b6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 2,
+					"source" : "E:/Dev/CPP/exolegend/extern/glfw",
+					"targetIndexes" : 
+					[
+						35
+					]
+				},
+				{
+					"build" : "mxbotlib/extern/glfw/src",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-mxbotlib.extern.glfw.src-Debug-7a087fbfe6865166309a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 2,
+					"source" : "E:/Dev/CPP/exolegend/extern/glfw/src",
+					"targetIndexes" : 
+					[
+						30,
+						36
+					]
+				},
+				{
+					"build" : "mxbotlib/extern/imgui",
+					"jsonFile" : "directory-mxbotlib.extern.imgui-Debug-d68217fd8967bdac54d7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "E:/Dev/CPP/exolegend/extern/imgui",
+					"targetIndexes" : 
+					[
+						31
+					]
+				},
+				{
+					"build" : "mxbotlib/extern/spdlog",
+					"jsonFile" : "directory-mxbotlib.extern.spdlog-Debug-d6ae9ffef5b78402f6f3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 3,
+					"source" : "E:/Dev/CPP/exolegend/extern/spdlog",
+					"targetIndexes" : 
+					[
+						34
+					]
+				},
+				{
+					"build" : "mxbotlib/extern/yaml",
+					"childIndexes" : 
+					[
+						9
+					],
+					"jsonFile" : "directory-mxbotlib.extern.yaml-Debug-011ac4e17a6ccb63f7a2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 4,
+					"source" : "E:/Dev/CPP/exolegend/extern/yaml",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						37
+					]
+				},
+				{
+					"build" : "mxbotlib/extern/yaml/util",
+					"jsonFile" : "directory-mxbotlib.extern.yaml.util-Debug-3333d89db9e4884f75ca.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 8,
+					"projectIndex" : 4,
+					"source" : "E:/Dev/CPP/exolegend/extern/yaml/util",
+					"targetIndexes" : 
+					[
+						38,
+						39,
+						40
+					]
+				},
+				{
+					"build" : "mxbotlib/src",
+					"jsonFile" : "directory-mxbotlib.src-Debug-37ab50191c6e1ce4329a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "E:/Dev/CPP/exolegend/src",
+					"targetIndexes" : 
+					[
+						32
+					]
+				},
+				{
+					"build" : "mxbotlib/apps",
+					"jsonFile" : "directory-mxbotlib.apps-Debug-350dc10a0cb3882f19c1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "E:/Dev/CPP/exolegend/apps",
+					"targetIndexes" : 
+					[
+						33
+					]
+				},
+				{
+					"build" : "src",
+					"jsonFile" : "directory-src-Debug-c94b7c2814d5a21df52c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src"
+				},
+				{
+					"build" : "bot1",
+					"jsonFile" : "directory-bot1-Debug-57c98a61b4f1f2629b93.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "bot1",
+					"targetIndexes" : 
+					[
+						28
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						12,
+						13
+					],
+					"name" : "BOTS",
+					"targetIndexes" : 
+					[
+						28
+					]
+				},
+				{
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4
+					],
+					"directoryIndexes" : 
+					[
+						1,
+						2,
+						3,
+						6,
+						10,
+						11
+					],
+					"name" : "MxBotLauncher",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						29,
+						31,
+						32,
+						33
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4,
+						5
+					],
+					"name" : "GLFW",
+					"parentIndex" : 1,
+					"targetIndexes" : 
+					[
+						30,
+						35,
+						36
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "spdlog",
+					"parentIndex" : 1,
+					"targetIndexes" : 
+					[
+						34
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8,
+						9
+					],
+					"name" : "YAML_CPP",
+					"parentIndex" : 1,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						37,
+						38,
+						39,
+						40
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 8,
+					"id" : "Continuous::@94b54c285bde19590378",
+					"jsonFile" : "target-Continuous-Debug-32dba67cd91fd258fa14.json",
+					"name" : "Continuous",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ContinuousBuild::@94b54c285bde19590378",
+					"jsonFile" : "target-ContinuousBuild-Debug-7ba21aa3c787027a0309.json",
+					"name" : "ContinuousBuild",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ContinuousConfigure::@94b54c285bde19590378",
+					"jsonFile" : "target-ContinuousConfigure-Debug-2ecaff827d7fabcee2a0.json",
+					"name" : "ContinuousConfigure",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ContinuousCoverage::@94b54c285bde19590378",
+					"jsonFile" : "target-ContinuousCoverage-Debug-df14e4a1f8fb19dafb70.json",
+					"name" : "ContinuousCoverage",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ContinuousMemCheck::@94b54c285bde19590378",
+					"jsonFile" : "target-ContinuousMemCheck-Debug-07d87ff78ad866726ed3.json",
+					"name" : "ContinuousMemCheck",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ContinuousStart::@94b54c285bde19590378",
+					"jsonFile" : "target-ContinuousStart-Debug-8feeef841ae583dce8de.json",
+					"name" : "ContinuousStart",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ContinuousSubmit::@94b54c285bde19590378",
+					"jsonFile" : "target-ContinuousSubmit-Debug-66a9278839bfc775abdc.json",
+					"name" : "ContinuousSubmit",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ContinuousTest::@94b54c285bde19590378",
+					"jsonFile" : "target-ContinuousTest-Debug-c12c776aad1ace1eae4f.json",
+					"name" : "ContinuousTest",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ContinuousUpdate::@94b54c285bde19590378",
+					"jsonFile" : "target-ContinuousUpdate-Debug-451e555f9a4955a8bb21.json",
+					"name" : "ContinuousUpdate",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "Experimental::@94b54c285bde19590378",
+					"jsonFile" : "target-Experimental-Debug-b3743945cca2973b34f0.json",
+					"name" : "Experimental",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ExperimentalBuild::@94b54c285bde19590378",
+					"jsonFile" : "target-ExperimentalBuild-Debug-67eb3b4b6e12208e4a61.json",
+					"name" : "ExperimentalBuild",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ExperimentalConfigure::@94b54c285bde19590378",
+					"jsonFile" : "target-ExperimentalConfigure-Debug-421d1f833cdef7c957d4.json",
+					"name" : "ExperimentalConfigure",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ExperimentalCoverage::@94b54c285bde19590378",
+					"jsonFile" : "target-ExperimentalCoverage-Debug-99f93856cd7144eef728.json",
+					"name" : "ExperimentalCoverage",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ExperimentalMemCheck::@94b54c285bde19590378",
+					"jsonFile" : "target-ExperimentalMemCheck-Debug-a55bd628f16b77b3ba0e.json",
+					"name" : "ExperimentalMemCheck",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ExperimentalStart::@94b54c285bde19590378",
+					"jsonFile" : "target-ExperimentalStart-Debug-42417c5701c8b83da199.json",
+					"name" : "ExperimentalStart",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ExperimentalSubmit::@94b54c285bde19590378",
+					"jsonFile" : "target-ExperimentalSubmit-Debug-93f33f515706d2462e1a.json",
+					"name" : "ExperimentalSubmit",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ExperimentalTest::@94b54c285bde19590378",
+					"jsonFile" : "target-ExperimentalTest-Debug-451d4a8c5d56ead4d1c6.json",
+					"name" : "ExperimentalTest",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "ExperimentalUpdate::@94b54c285bde19590378",
+					"jsonFile" : "target-ExperimentalUpdate-Debug-e0dde8bb0d84160fc61b.json",
+					"name" : "ExperimentalUpdate",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "Nightly::@94b54c285bde19590378",
+					"jsonFile" : "target-Nightly-Debug-fd58cd71e44ee687bd28.json",
+					"name" : "Nightly",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "NightlyBuild::@94b54c285bde19590378",
+					"jsonFile" : "target-NightlyBuild-Debug-f721d391bdd5984d609c.json",
+					"name" : "NightlyBuild",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "NightlyConfigure::@94b54c285bde19590378",
+					"jsonFile" : "target-NightlyConfigure-Debug-6fa25d97a568ff01c418.json",
+					"name" : "NightlyConfigure",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "NightlyCoverage::@94b54c285bde19590378",
+					"jsonFile" : "target-NightlyCoverage-Debug-c50e566a67e8ad707d53.json",
+					"name" : "NightlyCoverage",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "NightlyMemCheck::@94b54c285bde19590378",
+					"jsonFile" : "target-NightlyMemCheck-Debug-10157810d2682cb980c3.json",
+					"name" : "NightlyMemCheck",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "NightlyMemoryCheck::@94b54c285bde19590378",
+					"jsonFile" : "target-NightlyMemoryCheck-Debug-9a4c01338537944a69f8.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "NightlyStart::@94b54c285bde19590378",
+					"jsonFile" : "target-NightlyStart-Debug-a09aa399ec31a7ccd750.json",
+					"name" : "NightlyStart",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "NightlySubmit::@94b54c285bde19590378",
+					"jsonFile" : "target-NightlySubmit-Debug-363714d9c63d1a93ac18.json",
+					"name" : "NightlySubmit",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "NightlyTest::@94b54c285bde19590378",
+					"jsonFile" : "target-NightlyTest-Debug-2ed8cd8f7b16f2c201b0.json",
+					"name" : "NightlyTest",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "NightlyUpdate::@94b54c285bde19590378",
+					"jsonFile" : "target-NightlyUpdate-Debug-9e642897a25cb142b403.json",
+					"name" : "NightlyUpdate",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "bot1::@7b46f5435acea05d4af4",
+					"jsonFile" : "target-bot1-Debug-661b62f127477afaf979.json",
+					"name" : "bot1",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "glad::@b95e0c665f6f93a90b1c",
+					"jsonFile" : "target-glad-Debug-76e97d8bb9645edc66f4.json",
+					"name" : "glad",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "glfw::@7e55069c2ff00513a79f",
+					"jsonFile" : "target-glfw-Debug-df02ed7b744df5dcdcf0.json",
+					"name" : "glfw",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "imgui::@fb508c57cfeecccb7678",
+					"jsonFile" : "target-imgui-Debug-80360328a78f0155d2f1.json",
+					"name" : "imgui",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "mxbotlib::@9bc927e09b246e49f1fc",
+					"jsonFile" : "target-mxbotlib-Debug-c2f5201331aeafcb642f.json",
+					"name" : "mxbotlib",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "mxlauncher::@45ca09c829735c127c13",
+					"jsonFile" : "target-mxlauncher-Debug-5a18ccb90def82e7398b.json",
+					"name" : "mxlauncher",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "spdlog::@a78e9f065e34093a1386",
+					"jsonFile" : "target-spdlog-Debug-d17c28afc4703a45cfee.json",
+					"name" : "spdlog",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "uninstall::@aa7f1f9849d84d8e097b",
+					"jsonFile" : "target-uninstall-Debug-3584df7088ff7a3478ed.json",
+					"name" : "uninstall",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "update_mappings::@7e55069c2ff00513a79f",
+					"jsonFile" : "target-update_mappings-Debug-d3214878c17f3c7e630a.json",
+					"name" : "update_mappings",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "yaml-cpp::@94b54c285bde19590378",
+					"jsonFile" : "target-yaml-cpp-Debug-95eaa6755d52cb901ac2.json",
+					"name" : "yaml-cpp",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "yaml-cpp-parse::@2b1288b6c4c6fb9983e7",
+					"jsonFile" : "target-yaml-cpp-parse-Debug-b8c9e4941c391c8d3ba9.json",
+					"name" : "yaml-cpp-parse",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "yaml-cpp-read::@2b1288b6c4c6fb9983e7",
+					"jsonFile" : "target-yaml-cpp-read-Debug-e090e276c3c21dbdb9b7.json",
+					"name" : "yaml-cpp-read",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "yaml-cpp-sandbox::@2b1288b6c4c6fb9983e7",
+					"jsonFile" : "target-yaml-cpp-sandbox-Debug-408bad9f5bf987252eb3.json",
+					"name" : "yaml-cpp-sandbox",
+					"projectIndex" : 4
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "E:/Dev/CPP/exolegend/bots/cmake-build-debug",
+		"source" : "E:/Dev/CPP/exolegend/bots"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}

@@ -5,3 +5,8 @@ add_library(bot1 MODULE
 
 target_compile_definitions(bot1 PUBLIC std_cxx_17)
 target_include_directories(bot1 PUBLIC ../include)
+target_link_libraries(bot1 PUBLIC
+PUBLIC
+    mxbotlib
+    stdc++fs
+)

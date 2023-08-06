@@ -1,4 +1,5 @@
 #include "mx/fileUtils.hpp"
+#include "mx/core/log.hpp"
 #include "imgui.h"
 #include <cmath>
 #include <spdlog/spdlog.h>
@@ -43,12 +44,12 @@ mx::listDirectory(const std::string& path)
 {
     std::vector<mx::EntryDescriptor> listed{};
     if(fs::exists(path)) {
-        spdlog::debug("Listing {}", path);
+        MX_DEBUG("Listing {}", path);
         for(fs::directory_entry entry : fs::directory_iterator(path)) {
             listed.push_back(mx::EntryDescriptor{
                 .path       = entry.path().string(),
-                .name       = entry.path().filename(),
-                .extension  = entry.path().extension(),
+                .name       = entry.path().filename().string(),
+                .extension  = entry.path().extension().string(),
                 .mtime      = (uint32_t)entry.last_write_time().time_since_epoch().count(),
                 .size       = (entry.is_directory() ? 0u : entry.file_size()),
                 .isDir      = entry.is_directory()
@@ -61,5 +62,5 @@ mx::listDirectory(const std::string& path)
 
 std::string mx::getWorkingDirectoryPath()
 {
-    return fs::current_path();
+    return fs::current_path().string();
 }
